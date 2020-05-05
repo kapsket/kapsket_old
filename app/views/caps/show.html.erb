@@ -10,5 +10,25 @@
   <%= @cap.company %>
 </p>
 
+<h3>Current Pictures</h3>
+<%if @cap.images.attached?%>
+ <% @cap.images.each do |image| %>
+    <%= image_tag(image) %>
+<% end %>
+ 
+<%else%>
+
+  <p>=== Il n'y a pas encore de photos liées à cet capsule ===</p>
+
+  <% end %>
+
+<h3>Voulez-vous ajouter des photos ?</h3>
+<%= form_tag cap_images_path(@cap), multipart: true do %>
+  <%= file_field_tag :images %>
+  <%= submit_tag "mettre à jour" %>
+<% end %>
+
+<br></br>
+
 <%= link_to 'Edit', edit_cap_path(@cap) %> |
 <%= link_to 'Back', caps_path %>

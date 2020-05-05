@@ -20,5 +20,25 @@
   <%= @product.stock %>
 </p>
 
+<h3>Current Pictures</h3>
+<%if @product.photos.attached?%>
+ <% @product.photos.each do |photo| %>
+    <%= image_tag(photo) %>
+<% end %>
+ 
+<%else%>
+
+  <p>=== Il n'y a pas encore de photos liées à ce produit ===</p>
+
+  <% end %>
+
+<h3>Voulez-vous ajouter des photos ?</h3>
+<%= form_tag product_photos_path(@product), multipart: true do %>
+  <%= file_field_tag :photos %>
+  <%= submit_tag "mettre à jour" %>
+<% end %>
+
+<br></br>
+
 <%= link_to 'Edit', edit_product_path(@product) %> |
 <%= link_to 'Back', products_path %>

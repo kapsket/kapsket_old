@@ -4,4 +4,5 @@ class Product < ApplicationRecord
     validates :price, presence: true, numericality: { greater_than: 0 }
     validates :description, presence: true
     validates :stock, presence: true
+    has_many_attached :photos
 end
