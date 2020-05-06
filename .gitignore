@@ -28,3 +28,5 @@
 
 #Asset Pipeline
 public/assets
+
+.env

@@ -74,7 +74,8 @@ gem "table_print"
 gem 'bcrypt'
 gem 'faker'
 # Addons for Storage
-gem "aws-sdk", "~> 3.0"
+gem "aws-sdk-s3", require: false
+
 gem 'google_drive'
 # Addons for Scrapp
 gem 'nokogiri'
