@@ -1,4 +1,4 @@
-class CapsController < ApplicationController
+class  CapsController < ApplicationController
   before_action :set_cap, only: [:show, :edit, :update, :destroy]
 
   # GET /caps

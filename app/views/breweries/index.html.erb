@@ -1,0 +1,26 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Breweries</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Location</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @breweries.each do |brewery| %>
+      <tr>
+        <td><%= brewery.name %></td>
+        <td><%= brewery.location %></td>
+        <td><%= link_to 'Show', brewery %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
