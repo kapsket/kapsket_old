@@ -99,6 +99,8 @@ GEM
       railties (>= 4.1.0)
       responders
       warden (~> 1.2.3)
+    devise-guests (0.7.0)
+      devise
     dotenv (2.7.5)
     dotenv-rails (2.7.5)
       dotenv (= 2.7.5)
@@ -289,6 +291,7 @@ DEPENDENCIES
   coffee-rails (~> 4.2)
   colorize (~> 0.8.1)
   devise
+  devise-guests
   dotenv-rails
   faker
   gmaps4rails
