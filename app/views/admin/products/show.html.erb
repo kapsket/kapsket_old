@@ -28,6 +28,12 @@
 
   <% end %>
 
+<h3>Voulez-vous ajouter des photos ?</h3>
+<%= form_tag admin_product_photos_path(@product), multipart: true do %>
+  <%= file_field_tag :photos %>
+  <%= submit_tag "mettre à jour" %>
+<% end %>
+
 <br></br>
 
 <%= link_to 'Back', products_path %>

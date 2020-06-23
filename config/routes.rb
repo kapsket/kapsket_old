@@ -3,20 +3,29 @@ Rails.application.routes.draw do
   resources :breweries, only: [:show, :index] 
   resources :contact, only: [:index]
   resources :about, only: [:index]
-  resources :carts 
-  resources :caps, only: [:show, :index] do
-      resources :images, only: [:create]
-    end
+  resources :orders
+  resources :carts, except: [:index]
+  resources :caps, only: [:show, :index]
   resources :colors, only: [:show, :index]
-  resources :products, only: [:show, :index] do
-    resources :photos, only: [:create]
-    end
+  resources :products, only: [:show, :index]
   devise_for :users
-  resources :users
 
-  # namespace :admin do 
-  #   root to: 'admin/products#index'
-  #   resources :orders, :types, :carts, :caps, :colors, :products, :users, :images, :photos  
-  #   end
+
+  namespace :admin do 
+    root to: 'products#index'
+    resources :orders 
+    resources :types
+    resources :carts 
+    resources :caps  do
+      resources :images, only: [:create]
+      end
+    resources :colors 
+    resources :products do
+      resources :photos, only: [:create]
+      end
+    resources :users 
+    resources :types 
+    resources :breweries  
+    end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

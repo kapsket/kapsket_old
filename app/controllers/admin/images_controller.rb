@@ -1,4 +1,6 @@
-class ImagesController < ApplicationController
+class Admin::ImagesController < AdminController
+  before_action :authenticate_user!
+  before_action :is_admin?
 
     def create
         @cap = Cap.find(params[:cap_id])

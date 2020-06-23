@@ -1,4 +1,4 @@
-class PhotosController < ApplicationController
+class Admin::PhotosController < AdminController
 
     def create
         @product = Product.find(params[:product_id])
