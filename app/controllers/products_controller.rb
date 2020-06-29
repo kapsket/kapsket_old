@@ -1,5 +1,4 @@
 class ProductsController < ApplicationController
-  protect_from_forgery :except => [:create, :new, :index, :show, :edit]
   helper_method :current_or_guest_user  
   before_action :set_product, only: [:show, :edit, :update, :destroy]
 

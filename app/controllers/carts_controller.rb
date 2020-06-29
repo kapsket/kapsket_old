@@ -1,6 +1,5 @@
 class CartsController < ApplicationController
   helper_method :current_or_guest_user
-  protect_from_forgery :except => [:create, :new, :index, :show, :edit]
   rescue_from ActiveRecord::RecordNotFound, with :invalid_cart
   before_action :set_cart, only: [:show, :edit, :update, :destroy]
 
@@ -28,7 +27,7 @@ class CartsController < ApplicationController
   # POST /carts
   # POST /carts.json
   def create
-    @cart = Cart.new(cart_params)
+    @cart = Cart.new(user_id: current_or_guest_user.id)
 
     respond_to do |format|
       if @cart.save
