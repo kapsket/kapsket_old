@@ -1,5 +1,7 @@
 class ApplicationController < ActionController::Base
-
+    
+    protect_from_forgery
+    
     # if user is logged in, return current_user, else return guest_user
     def current_or_guest_user
       if current_user

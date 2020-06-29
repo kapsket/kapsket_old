@@ -9,9 +9,7 @@ Rails.application.routes.draw do
   resources :colors, only: [:show, :index]
   resources :products, only: [:show, :index]
   devise_for :users 
-  resources :users do 
-    resources :carts 
-  end
+  resources :carts 
 
 
   namespace :admin do 
