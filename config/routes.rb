@@ -1,21 +1,23 @@
 Rails.application.routes.draw do
   root to:  'products#index'
+  resources :line_items
   resources :breweries, only: [:show, :index] 
   resources :contact, only: [:index]
   resources :about, only: [:index]
   resources :orders
-  resources :carts, except: [:index]
   resources :caps, only: [:show, :index]
   resources :colors, only: [:show, :index]
   resources :products, only: [:show, :index]
-  devise_for :users
+  devise_for :users 
+  resources :users do 
+    resources :carts 
+  end
 
 
   namespace :admin do 
     root to: 'products#index'
     resources :orders 
     resources :types
-    resources :carts 
     resources :caps  do
       resources :images, only: [:create]
       end
@@ -23,7 +25,9 @@ Rails.application.routes.draw do
     resources :products do
       resources :photos, only: [:create]
       end
-    resources :users 
+    resources :users do 
+      resources :carts 
+    end
     resources :types 
     resources :breweries  
     end
