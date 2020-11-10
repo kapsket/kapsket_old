@@ -25,7 +25,7 @@ class CartsController < ApplicationController
   # POST /carts
   # POST /carts.json
   def create
-    @cart = Cart.new(cart_params)
+    @cart = Cart.new(user_id: current_or_guest_user.id)
 
     respond_to do |format|
       if @cart.save

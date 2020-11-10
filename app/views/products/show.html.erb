@@ -27,11 +27,6 @@
   <p>=== Il n'y a pas encore de photos liées à ce produit ===</p>
 
   <% end %>
-  
-  <%= current_or_guest_user.id %>
-  <%= session.to_hash %>
-
- <%= link_to 'Add to cart', line_items_path(product_id: @product.id), method: :post %>
 
 <br></br>
 
