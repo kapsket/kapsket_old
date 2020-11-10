@@ -1,8 +1,5 @@
 class Cart < ApplicationRecord
     belongs_to :user, :optional => true
-<<<<<<< HEAD
-    has_many :products
-=======
     has_many :line_items, dependent: :destroy
 
     def add_product(product)
@@ -15,5 +12,4 @@ class Cart < ApplicationRecord
         current_item
     end
 
->>>>>>> devise_guest
 end
