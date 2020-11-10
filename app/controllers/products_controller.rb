@@ -1,4 +1,5 @@
 class ProductsController < ApplicationController
+  helper_method :current_or_guest_user  
   before_action :set_product, only: [:show, :edit, :update, :destroy]
 
   # GET /products
@@ -71,4 +72,6 @@ class ProductsController < ApplicationController
     def product_params
       params.require(:product).permit(:name, :price, :description, :stock)
     end
+
+    
 end

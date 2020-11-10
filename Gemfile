@@ -67,6 +67,7 @@ gem 'stripe_event'
 # Security
 gem 'dotenv-rails'
 gem 'devise'
+gem 'devise-guests'
 # Debug
 gem "letter_opener", "~> 1.7"
 gem "colorize", "~> 0.8.1"

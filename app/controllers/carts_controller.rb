@@ -1,4 +1,5 @@
 class CartsController < ApplicationController
+  helper_method :current_or_guest_user
   before_action :set_cart, only: [:show, :edit, :update, :destroy]
 
   # GET /carts
@@ -24,7 +25,7 @@ class CartsController < ApplicationController
   # POST /carts
   # POST /carts.json
   def create
-    @cart = Cart.new(cart_params)
+    @cart = Cart.new(user_id: current_or_guest_user.id)
 
     respond_to do |format|
       if @cart.save
@@ -69,6 +70,6 @@ class CartsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def cart_params
-      params.fetch(:cart, {})
+      params.fetch(:cart, {}).permit(:current_or_guest_user)
     end
 end

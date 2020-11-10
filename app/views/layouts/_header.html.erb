@@ -1,0 +1,14 @@
+<header>
+        <div class="d-flex ">
+            <div class="d-flex justify-content-start material-icons" style="float: right*;"> <a href="#">shopping_cart</a></div>
+            <div class="d-flex justify-content-end authentication ml-auto p-2">
+            <% if user_signed_in? %>
+            <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
+            <% else %> 
+            <%= link_to "Sign in", new_user_session_path, method: :get %>
+            <% end %>
+            </div>
+        </div>
+
+        <div class="d-flex justify-content-center titre">KAPSKET</div>
+</header>

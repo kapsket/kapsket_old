@@ -1,10 +1,45 @@
-<p id="notice"><%= notice %></p>
+<!DOCTYPE html>
 
-<% if flash[:alert] %>
-    <div class="alert"><%= flash[:alert] %></div>
-<% end %>
+<!-- Début html -->
 
-<h1>Products</h1>
+<html>
+<head>
+<title>KAPSKET</title>
+<meta charset="utf-8">
+<link rel="stylesheet" type="text/css" href="../TEST2/style.css">
+<link href="https://fonts.googleapis.com/css2?family=Martel&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+
+</head>
+  
+<%= render 'layouts/header' %>
+
+<body>
+
+<div class="Menu1">
+<ul id="naviguation">
+
+<li><%= link_to "Produits", products_path %></li>
+<li><%= link_to "À propos", about_index_path %></li>
+<li><%= link_to "Contact", contact_index_path %></li>
+
+</ul>
+</div>
+
+<center><div class="separateur_noir1"></div>
+<div class="separateur_noir2"></div></center>
+
+<!-- Menu 2 -->
+
+<div class="Menu2">
+
+<ul>
+	<li><%= link_to "All", products_path, remote: true %></li>
+  <li><%= link_to "Casquettes", products_path, remote: true %></li>
+	<li><%= link_to "Bonnets", products_path, remote: true %></li>
+	<li><%= link_to "Bobs", products_path, remote: true %></li>
+</ul>
 
 <table>
   <thead>
@@ -15,11 +50,6 @@
       <th colspan="3"></th>
     </tr>
   </thead>
-  <% if user_signed_in? %>
-  <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
-  <% else %> 
-  <%= link_to "Sign in", new_user_session_path, method: :get %>
-  <% end %>
   <tbody>
     <% @products.each do |product| %>
       <tr>
@@ -31,3 +61,29 @@
     <% end %>
   </tbody>
 </table>
+	
+</div></body> <br />
+
+
+
+<!-- debut footer-->
+
+ <footer>
+          <div class="row">
+            <a href="https://www.facebook.com" class="form-social" target="_blank" style="background-image: url('../TEST2/IMG/facebook.jpg')"></a>
+            <a href="https://www.instagram.com" class="form-social" target="_blank" style="background-image: url('../TEST2/IMG/instagram.jpg')"></a> 
+            </div>
+
+        <center>
+        <small class="text">Copyright © 2020 Kapsket. All rights reserved.</small>
+      </center>
+</footer>
+
+    <!-- Fin footer -->
+
+</body>
+
+</html>
+
+
+
