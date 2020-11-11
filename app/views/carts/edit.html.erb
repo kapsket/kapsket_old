@@ -1,6 +1,17 @@
 <h1>Editing Cart</h1>
 
-<%= render 'form', cart: @cart %>
+<tbody>
+    <% @cart.line_items.each do |item| %>
+      <tr>
+        <td><%= item.product.name %></td>
+        <td><%= item.product.price %></td>
+        <td><%= item.product.description %></td>
+        <td><%= link_to 'Show', item %></td>
+        <td><%= link_to 'Delete', item %></td>
+      </tr>
+    <% end %>
+</tbody>
 
+<%= render 'form', cart: @cart %>
 <%= link_to 'Show', @cart %> |
 <%= link_to 'Back', carts_path %>

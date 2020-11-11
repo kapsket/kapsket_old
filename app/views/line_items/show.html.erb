@@ -1,14 +1,24 @@
 <p id="notice"><%= notice %></p>
 
+<%if @line_item.product.photos.attached?%>
+ <% @lne_item.product.photos.each do |photo| %>
+    <%= image_tag(photo) %>
+<% end %>
+<%else%>
+
+  <p>=== Il n'y a pas encore de photos liées à ce produit ===</p>
+
+<% end %>
 <p>
   <strong>Product:</strong>
-  <%= @line_item.product %>
+  <%= @line_item.product.name %>
 </p>
 
 <p>
-  <strong>Cart:</strong>
-  <%= @line_item.cart %>
+  <strong>Price:</strong>
+  <%= @product.price %>
 </p>
+
 
 <%= link_to 'Edit', edit_line_item_path(@line_item) %> |
 <%= link_to 'Back', line_items_path %>

@@ -85,3 +85,6 @@ gem 'gmaps4rails'
 
 gem "pg_search", "~> 2.3"
 
+#image
+
+gem "mini_magick"

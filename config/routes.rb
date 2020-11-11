@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   resources :orders
   resources :caps, only: [:show, :index]
   resources :colors, only: [:show, :index]
-  resources :products, only: [:show, :index]
+  resources :products, only: [:show, :create, :index]
   devise_for :users 
   resources :carts 
 

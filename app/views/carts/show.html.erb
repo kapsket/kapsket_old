@@ -1,6 +1,20 @@
 <p id="notice"><%= notice %></p>
 
+<tbody>
+    <% @cart.line_items.each do |item| %>
+      <tr>
+        <%if item.product.photos.attached?%>
+        <% item.product.photos.each do |photo| %>
+        <%= image_tag(photo) %>
+        <% end %>
+        <% end %>
+        <td><%= item.product.name %></td>
+        <td><%= item.product.price %></td>
+        <td><%= item.product.description %></td>
+        <td><%= link_to 'Show', item %></td>
+        <td><%= link_to 'Edit', item %></td>
+      </tr>
+    <% end %>
+  </tbody>
 
-
-<%= link_to 'Edit', edit_cart_path(@cart) %> |
 <%= link_to 'Back', root_path %>

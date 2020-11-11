@@ -9,10 +9,13 @@ header .titre {
 
 }
 
-body {
-	margin: 0;
-	padding:0;
+header {
+	padding-top: 50px;
+}
 
+body {
+	margin-right: 300px;
+	margin-left: 300px;
 }
 
 header .material-icons {

@@ -18,8 +18,8 @@
 
 <h3>Current Pictures</h3>
 <%if @product.photos.attached?%>
- <% @product.photos.each do |photo| %>
-    <%= image_tag(photo) %>
+ <% (0...@product.photos.count).each do |photo| %>
+    <%= image_tag(@product.thumbnail(photo)) %>
 <% end %>
  
 <%else%>
@@ -30,7 +30,7 @@
 
 <h3>Voulez-vous ajouter des photos ?</h3>
 <%= form_tag admin_product_photos_path(@product), multipart: true do %>
-  <%= file_field_tag :photos %>
+  <%= file_field_tag :photos, multiple: true %>
   <%= submit_tag "mettre à jour" %>
 <% end %>
 

@@ -1,3 +1,5 @@
+<%= render 'layouts/header' %>
+
 <p id="notice"><%= notice %></p>
 
 <p>
@@ -18,16 +20,20 @@
 
 <h3>Current Pictures</h3>
 <%if @product.photos.attached?%>
- <% @product.photos.each do |photo| %>
-    <%= image_tag(photo) %>
+ <% (0...@product.photos.count).each do |photo| %>
+    <%= image_tag(@product.thumbnail(photo)) %>
 <% end %>
  
 <%else%>
 
   <p>=== Il n'y a pas encore de photos liées à ce produit ===</p>
 
-  <% end %>
+<% end %>
 
 <br></br>
 
+<%= button_to 'Ajouter au Panier', line_items_path(product_id: @product)%>
+
 <%= link_to 'Back', products_path %>
+
+<%= render 'layouts/footer' %>

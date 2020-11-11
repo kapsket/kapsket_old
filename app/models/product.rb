@@ -8,6 +8,10 @@ class Product < ApplicationRecord
     validates :stock, presence: true
     has_many_attached :photos
 
+    def thumbnail input
+        return self.photos[input].variant(resize: '200x200!').processed  
+    end
+
     private 
 
     def not_referenced_by_any_line_item
