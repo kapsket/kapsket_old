@@ -7,28 +7,27 @@
             <a class="closebtn" style="color: white" onclick="closeNav()">&times;</a>
 
             <% if user_signed_in? %>
-            <a href="/mon_profil">Profile</a>
+            <a href="/mon_profil">Profil</a>
             <hr>
-            <a href="/mon_panier" data-method="get">My Cart</a>
+            <%# <a href="<%= cart_path (id: current_or_guest_user.cart.id) %>" data-method="get">Mon Panier</a> %>
             <hr>
             <a href="<%= products_path %>">Acceuil</a>
             <hr>
-            <a href="<%= destroy_user_session_path %>" data-method="delete">Log out</a>
+            <a href="<%= destroy_user_session_path %>" data-method="delete">Se déconnecter</a>
             <hr>
             <a href="mailto:youremailaddress">Contact&nbsp;&nbsp;<i class="far fa-envelope"></i></a>
             <hr>
 
             <% else %>
-            <a href="<%= new_user_session_path %>">Sign in</a>
+            <a href="<%= new_user_session_path %>">Se connecter</a>
             <hr>
-            <a href="<%= new_user_registration_path %>">Register</a>
+            <a href="<%= new_user_registration_path %>">S'inscrire</a>
             <hr>
             <a href="<%= products_path %>">Acceuil</a>
             <hr>
             <a href="mailto:youremailaddress">Contact&nbsp;&nbsp;<i class="far fa-envelope"></i></a>
             <hr>
             <% end %>
-            
             </div>
             </nav>
             </div>
