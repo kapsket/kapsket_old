@@ -1,14 +1,43 @@
 <header>
         <div class="d-flex ">
-            <div class="d-flex justify-content-start material-icons" style="float: right*;"> <a href="#">shopping_cart</a></div>
-            <div class="d-flex justify-content-end authentication ml-auto p-2">
+            <div class="d-flex justify-content-start p-2">
+            <nav>
+            <a id="sticky" class="openbtn" onclick="openNav()"><i class="fas fa-chevron-right"></i></a>
+            <div id="mySidenav" class="sidenav">
+            <a class="closebtn" style="color: white" onclick="closeNav()">&times;</a>
+
             <% if user_signed_in? %>
-            <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
-            <% else %> 
-            <%= link_to "Sign in", new_user_session_path, method: :get %>
+            <a href="/mon_profil">Profile</a>
+            <hr>
+            <a href="/mon_panier" data-method="get">My Cart</a>
+            <hr>
+            <a href="<%= products_path %>">Acceuil</a>
+            <hr>
+            <a href="<%= destroy_user_session_path %>" data-method="delete">Log out</a>
+            <hr>
+            <a href="mailto:youremailaddress">Contact&nbsp;&nbsp;<i class="far fa-envelope"></i></a>
+            <hr>
+
+            <% else %>
+            <a href="<%= new_user_session_path %>">Sign in</a>
+            <hr>
+            <a href="<%= new_user_registration_path %>">Register</a>
+            <hr>
+            <a href="<%= products_path %>">Acceuil</a>
+            <hr>
+            <a href="mailto:youremailaddress">Contact&nbsp;&nbsp;<i class="far fa-envelope"></i></a>
+            <hr>
             <% end %>
+            
             </div>
-        </div>
+            </nav>
+            </div>
+            <div class="d-flex justify-content-end material-icons ml-auto p-2" style="float: right*;"> <a href="#">shopping_cart</a></div>
+
+            </div>
+
+
+        
 
         <div class="d-flex justify-content-center titre"><%= link_to "KAPSKET", products_path, method: :get %></div>
 </header> 
