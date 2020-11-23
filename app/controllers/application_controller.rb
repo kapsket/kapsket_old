@@ -1,5 +1,8 @@
-class ApplicationController < ActionController::Base
-    
+class ApplicationController < ActionController::Base   
+  
+  include CurrentCart
+  before_action :set_cart
+
     protect_from_forgery
     
     # if user is logged in, return current_user, else return guest_user
@@ -47,5 +50,5 @@ class ApplicationController < ActionController::Base
       session[:guest_user_id] = u.id
       u
     end
-  
+
 end

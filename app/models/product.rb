@@ -1,6 +1,6 @@
 class Product < ApplicationRecord
     before_destroy :not_referenced_by_any_line_item
-    has_many :users
+    belongs_to :user, optional: true
     has_many :line_items 
     validates :name, presence: true
     validates :price, presence: true, numericality: { greater_than: 0 }

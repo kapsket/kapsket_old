@@ -8,9 +8,9 @@
             <a class="closebtn" style="color: white" onclick="closeNav()">&times;</a>
 
             <% if user_signed_in? %>
-            <a href="/mon_profil">Profil</a>
+            <a href="<%= edit_user_registration_path %>">Mon Profil</a>
             <hr>
-            <%= link_to "Mon Panier", cart_path(id: current_or_guest_user.cart.id), method: "get"%>
+            <%# <%= link_to "Mon Panier", cart_path(id: current_or_guest_user.cart.id), method: "get"%> %>
             <hr>
             <a href="<%= products_path %>">Accueil</a>
             <hr>
