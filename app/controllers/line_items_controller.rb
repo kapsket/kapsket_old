@@ -1,6 +1,5 @@
 class LineItemsController < ApplicationController
   include CurrentCart 
-  helper_method :current_or_guest_user
   before_action :set_line_item, only: [:show, :edit, :update, :destroy]
   before_action :set_cart, only: [:create]
 

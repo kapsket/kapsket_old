@@ -1,5 +1,4 @@
 class CartsController < ApplicationController
-  helper_method :current_or_guest_user
   rescue_from ActiveRecord::RecordNotFound, with: :invalid_cart
   before_action :set_cart, only: [:show, :edit, :update, :destroy]
 
@@ -26,7 +25,7 @@ class CartsController < ApplicationController
   # POST /carts
   # POST /carts.json
   def create
-    @cart = Cart.new(user_id: current_or_guest_user.id)
+    @cart = Cart.new()
 
     respond_to do |format|
       if @cart.save
@@ -72,7 +71,7 @@ class CartsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def cart_params
-      params.fetch(:cart, {}).permit(:current_or_guest_user)
+      params.fetch(:cart, {})
     end
 
     def invalid_cart
