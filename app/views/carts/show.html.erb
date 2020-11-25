@@ -1,20 +1,19 @@
-<p id="notice"><%= notice %></p>
+<div class="keep-shopping pv1 mt4 has-text-right">
+  <%= link_to 'Keep Shopping', products_path, class: 'button is_warning'%>
+</div>
+<hr />
+<section class="section">
+  <%= render(@cart.line_items) %>
 
-<tbody>
-    <% @cart.line_items.each do |item| %>
-      <tr>
-        <%if item.product.photos.attached?%>
-        <% item.product.photos.each do |photo| %>
-        <%= image_tag(photo) %>
-        <% end %>
-        <% end %>
-        <td><%= item.product.name %></td>
-        <td><%= item.product.price %></td>
-        <td><%= item.product.description %></td>
-        <td><%= link_to 'Show', item %></td>
-        <td><%= link_to 'Edit', item %></td>
-      </tr>
-    <% end %>
-  </tbody>
+    <div class="columns">
+      <div class="column">
+        <%= button_to 'Empty Cart', @cart, method: :delete, data: { confirm: "Are you sure" }, class:"button is-danger"%>
 
-<%= link_to 'Back', root_path %>
+        </div>
+        <div class="column total has-text-right">
+          <h4 class="title is-4">
+            <span class="f5 has-text-grey">Total:</span> <%= number_to_currency(@cart.total_price) %>
+          </h4>
+        </div>
+      </div>
+</section>  

@@ -7,10 +7,10 @@
         
             <a class="closebtn" style="color: white" onclick="closeNav()">&times;</a>
 
-            <% if user_signed_in? %>
+            <% case %>
+            <% when current_or_guest_user.guest == true %>
             <a href="<%= edit_user_registration_path %>">Mon Profil</a>
             <hr>
-            <%# <%= link_to "Mon Panier", cart_path(id: current_or_guest_user.cart.id), method: "get"%> %>
             <hr>
             <a href="<%= products_path %>">Accueil</a>
             <hr>
@@ -19,12 +19,12 @@
             <a href="mailto:youremailaddress">Contact&nbsp;&nbsp;<i class="far fa-envelope"></i></a>
             <hr>
 
-            <% else %>
-            <a href="<%= new_user_session_path %>">Se connecter</a>
+            <% when current_or_guest_user.guest == false %>
+            <a href="<%= products_path %>">Acceuil</a>
+            <hr>
+            <a href="<%= new_user_session_path %>" data-method="get">Se connecter</a>
             <hr>
             <a href="<%= new_user_registration_path %>">S'inscrire</a>
-            <hr>
-            <a href="<%= products_path %>">Acceuil</a>
             <hr>
             <a href="mailto:youremailaddress">Contact&nbsp;&nbsp;<i class="far fa-envelope"></i></a>
             <hr>
@@ -32,12 +32,12 @@
             </div>
             </nav>
             </div>
-            <div class="d-flex justify-content-end material-icons ml-auto p-2" style="float: right*;"> <a href="#">shopping_cart</a></div>
+
+
+            <%# <div class="d-flex justify-content-end material-icons ml-auto p-2" style="float: right*;"> <a href="<%= cart_path(@carts.find_by(session[:cart_id] = @cart.id)) %>">shopping_cart</a></div>%>
 
             </div>
 
-
-        
 
         <div class="d-flex justify-content-center titre"><%= link_to "KAPSKET", products_path, method: :get %></div>
 </header> 
