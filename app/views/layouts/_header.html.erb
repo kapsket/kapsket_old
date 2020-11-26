@@ -19,7 +19,7 @@
             <a href="mailto:youremailaddress">Contact&nbsp;&nbsp;<i class="far fa-envelope"></i></a>
             <hr>
 
-            <% when current_or_guest_user.guest == false %>
+            <% when current_or_guest_user    %>
             <a href="<%= products_path %>">Acceuil</a>
             <hr>
             <a href="<%= new_user_session_path %>" data-method="get">Se connecter</a>

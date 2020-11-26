@@ -15,5 +15,18 @@
 
  */
 
+$link: #444;
+$link_hover: #222;
+
+@import 'bulma';
+
+.notification {
+    border-radius: 0;
+}
+
+.notification:not(:last-child) {
+    margin-bottom: 0;
+}
+
 
 
