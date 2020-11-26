@@ -8,7 +8,9 @@ Rails.application.routes.draw do
   resources :caps, only: [:show, :index]
   resources :colors, only: [:show, :index]
   resources :products, only: [:show, :create, :index]
-  devise_for :users 
+  devise_for :users, controllers: {
+    registrations: 'registrations'
+  }
   resources :carts 
 
 
