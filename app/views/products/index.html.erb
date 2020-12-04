@@ -1,17 +1,3 @@
-<!DOCTYPE html>
-
-<!-- Début html -->
-
-<html>
-<head>
-<title>KAPSKET</title>
-<meta charset="utf-8">
-<link rel="stylesheet" type="text/css" href="../TEST2/style.css">
-<link href="https://fonts.googleapis.com/css2?family=Martel&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
-      rel="stylesheet">
-
-</head>
   
 <%= render 'layouts/header' %>
 
@@ -39,23 +25,21 @@
     <li><%= link_to "Casquettes", products_path, remote: true %></li>
     <li><%= link_to "Bonnets", products_path, remote: true %></li>
     <li><%= link_to "Bobs", products_path, remote: true %></li>
-  </ul>
-
-</div>
-
-    <% @products.each do |product| %>
+  </ul> 
+    <div class="d-flex">
+      <% @products.each do |product| %>
         <%if product.photos.attached?%>
-        <% (0...product.photos.count).each do |photo| %>
-        <div class="d-flex justify-content-between">
-        <div class="card p-2" style="width: 20rem;">
-        <%= image_tag(product.thumbnail(photo)) %>
+          <div class="d-flex justify-content-around p-2 "> 
+            <div class="d-flex card p-2" style="width: 20rem">
+              <%= image_tag(product.photos[0])%>
+              <%= link_to "#{product.name}", product %> 
         <% end %>
-        <% end %>
-        <%= link_to "#{product.name}", product %>
-        </div>
-        </div>
-    <% end %>
-	
+          </div>
+            </div>
+      <% end%>
+    </div>
+  </div>
+
 </body>
 
 
@@ -63,6 +47,5 @@
 
 
 </html>
-
 
 
