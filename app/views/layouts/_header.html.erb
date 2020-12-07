@@ -8,22 +8,20 @@
             <a class="closebtn" style="color: white" onclick="closeNav()">&times;</a>
 
             <% case %>
-            <% when guest_user %>
+            <% when current_or_guest_user.guest == true %>
             <hr>
             <a href="<%= products_path %>">Acceuil</a>
+            <hr>
+            <a href="<%= cart_path(@cart) %>" data-method="get">Mon panier</a>
             <hr>
             <a href="<%= new_user_registration_path %>" data-method="get">S'inscrire</a>
             <hr>
             <a href="<%= new_user_session_path %>" data-method="get">Se connecter</a>
             <hr>
-            <a href="<%= cart_path(@cart) %>" data-method="get">Mon panier</a>
-            <hr>
-            <a href="<%= destroy_user_session_path %>" data-method="delete">Se déconnecter</a>
-            <hr>
             <a href="mailto:youremailaddress">Contact&nbsp;&nbsp;<i class="far fa-envelope"></i></a>
             <hr>
 
-            <% when current_user %>
+            <% when current_or_guest_user.guest == false %>
             <a href="<%= products_path %>">Acceuil</a>
             <hr>
             <a href="<%= edit_user_registration_path %>">Mon profil</a>
