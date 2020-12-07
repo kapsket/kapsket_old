@@ -19,7 +19,7 @@
             <a href="mailto:youremailaddress">Contact&nbsp;&nbsp;<i class="far fa-envelope"></i></a>
             <hr>
 
-            <% when current_user%>
+            <% when current_user %>
             <a href="<%= products_path %>">Acceuil</a>
             <hr>
             <a href="<%= edit_user_registration_path %>">Mon profil</a>
@@ -34,7 +34,6 @@
             </div>
             </nav>
             </div>
-
 
             <div class="d-flex justify-content-end material-icons ml-auto p-2" style="float: right*;"> <a href="<%=cart_path(@cart) %>">shopping_cart</a></div>
 
