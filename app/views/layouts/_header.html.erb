@@ -14,19 +14,23 @@
             <hr>
             <a href="<%= new_user_registration_path %>" data-method="get">S'inscrire</a>
             <hr>
+            <a href="<%= new_user_session_path %>" data-method="get">Se connecter</a>
+            <hr>
             <a href="<%= cart_path(@cart) %>" data-method="get">Mon panier</a>
+            <hr>
+            <a href="<%= destroy_user_session_path %>" data-method="delete">Se déconnecter</a>
             <hr>
             <a href="mailto:youremailaddress">Contact&nbsp;&nbsp;<i class="far fa-envelope"></i></a>
             <hr>
 
-            <% when current_user%>
+            <% when current_user %>
             <a href="<%= products_path %>">Acceuil</a>
             <hr>
             <a href="<%= edit_user_registration_path %>">Mon profil</a>
             <hr>
             <a href="<%= cart_path(@cart) %>" data-method="get">Mon panier</a>
             <hr>
-            <a href="<%= destroy_user_session_path %>" data-method="get">Se déconnecter</a>
+            <a href="<%= destroy_user_session_path %>" data-method="delete">Se déconnecter</a>
             <hr>
             <a href="mailto:youremailaddress">Contact&nbsp;&nbsp;<i class="far fa-envelope"></i></a>
             <hr>

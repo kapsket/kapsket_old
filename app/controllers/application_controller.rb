@@ -1,11 +1,9 @@
 class ApplicationController < ActionController::Base   
-  
+  helper_method :current_or_guest_user  
   protect_from_forgery with: :exception
   include CurrentCart
   before_action :set_cart
 
-    protect_from_forgery
-    
     # if user is logged in, return current_user, else return guest_user
     def current_or_guest_user
       if current_user
