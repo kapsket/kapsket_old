@@ -8,7 +8,7 @@
     <div class="columns">
       <div class="column">
         <%= button_to 'Empty Cart', @cart, method: :delete, data: { confirm: "Are you sure" }, class:"button is-danger"%>
-
+        <button id="checkout-button">Checkout</button>
         </div>
       </div>
         <div class="column total pv1 mt4   has-text-right">
@@ -17,4 +17,5 @@
           </h4>
         </div>
       </div>
-</section>  
+</section>
+

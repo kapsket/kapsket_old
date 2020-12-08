@@ -5,6 +5,10 @@ Rails.application.routes.draw do
   resources :contact, only: [:index]
   resources :about, only: [:index]
   resources :orders
+  namespace :stripe do
+    resources :checkouts
+    post 'checkout/webhook', to: "checkouts#webhook"
+  end
   resources :caps, only: [:show, :index]
   resources :colors, only: [:show, :index]
   resources :products, only: [:show, :create, :index]
