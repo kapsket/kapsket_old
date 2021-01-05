@@ -1,13 +1,7 @@
-<html>
-  <head>
-    <title>Buy cool new product</title>
-    <script src="https://js.stripe.com/v3/"></script>
-  </head>
-  <body>
-        <div class="keep-shopping pv1 mt4 has-text-right">
+<div class="keep-shopping pv1 mt4 has-text-right">
   <%= link_to 'Keep Shopping', products_path, class: 'button is_warning'%>
 </div>
-<hr/>
+<hr />
 <section class="section">
   <%= render(@cart.line_items) %>
 
@@ -23,7 +17,4 @@
         </div>
       </div>
 </section>
-
-    <button id="checkout-button">Checkout</button>
-  </body>
-</html>
+<%= button_to 'Buy now', checkout_create_path, method: :post, params: { id: @cart.id }, remote:true %>
