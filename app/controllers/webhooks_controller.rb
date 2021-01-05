@@ -6,7 +6,7 @@ class WebhooksController < ApplicationController
     # receive POST from Stripe or another third party
     payload = request.body.read
     sig_header = request.env['HTTP_STRIPE_SIGNATURE']
-    endpoint_secret = ENV['WEBHOOK_SECRET']
+    endpoint_secret = Rails.application.credentials.stripe[:webhook_secret]
     event = nil
 
     begin
