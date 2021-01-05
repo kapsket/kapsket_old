@@ -1,39 +1,28 @@
 <%= render 'layouts/header' %>
-
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Name:</strong>
+<container>
+<div class="product_info">
   <%= @product.name %>
-</p>
+</div>
 
-<p>
-  <strong>Price:</strong>
-  <%= @product.price %>
-</p>
+<div class="product_info3">
+  <%= @product.description %>  
+</div>
 
-<p>
-  <strong>Description:</strong>
-  <%= @product.description %>
-</p>
-
-
-<h3>Current Pictures</h3>
+<div class="product_photo">
 <%if @product.photos.attached?%>
  <% (0...@product.photos.count).each do |photo| %>
     <%= image_tag(@product.thumbnail(photo)) %>
 <% end %>
- 
-<%else%>
-
-  <p>=== Il n'y a pas encore de photos liées à ce produit ===</p>
-
 <% end %>
+</div>
+
+<div class="product_info2">
+  <div class="price"><%= @product.price%>€</div>
+  <div class="pay_button"><%= link_to 'Add to Cart', line_items_path(product_id: @product), method: :post ,  class:'btn btn m-0' %></div>
+</div>
 
 <br></br>
 
-<%= button_to 'Ajouter au Panier', line_items_path(product_id: @product)%>
-
-<%= link_to 'Back', products_path %>
+</container>
 
 <%= render 'layouts/footer' %>

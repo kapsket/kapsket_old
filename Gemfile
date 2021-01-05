@@ -68,6 +68,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'stripe'
 gem 'stripe_event'
 # Security
+gem 'dotenv'
 gem 'dotenv-rails'
 gem 'devise'
 gem 'devise-guests'
@@ -99,3 +100,9 @@ gem 'gravatar_image_tag'
 gem 'simple_form'
 
 gem 'bulma-rails'
+
+gem 'sinatra'
+
+gem 'sinatra-reloader'
+
+gem 'json'

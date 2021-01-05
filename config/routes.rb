@@ -16,6 +16,9 @@ Rails.application.routes.draw do
     registrations: 'registrations'
   }
   resources :carts 
+  resources :charges
+
+
 
 
   namespace :admin do 

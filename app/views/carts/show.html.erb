@@ -1,14 +1,19 @@
-<div class="keep-shopping pv1 mt4 has-text-right">
+<html>
+  <head>
+    <title>Buy cool new product</title>
+    <script src="https://js.stripe.com/v3/"></script>
+  </head>
+  <body>
+        <div class="keep-shopping pv1 mt4 has-text-right">
   <%= link_to 'Keep Shopping', products_path, class: 'button is_warning'%>
 </div>
-<hr />
+<hr/>
 <section class="section">
   <%= render(@cart.line_items) %>
 
     <div class="columns">
       <div class="column">
         <%= button_to 'Empty Cart', @cart, method: :delete, data: { confirm: "Are you sure" }, class:"button is-danger"%>
-        <button id="checkout-button">Checkout</button>
         </div>
       </div>
         <div class="column total pv1 mt4   has-text-right">
@@ -19,3 +24,6 @@
       </div>
 </section>
 
+    <button id="checkout-button">Checkout</button>
+  </body>
+</html>
