@@ -1,1 +1,9 @@
-Stripe.api_key = Rails.application.credentials.stripe[:secret_key]
+# frozen_string_literal: true
+
+Rails.configuration.stripe = {
+  publishable_key: ENV['STRIPE_PUBLISHABLE_KEY'],
+  secret_key: ENV['STRIPE_SECRET_KEY'],
+  endpoint_secret: ENV['STRIPE_WEBHOOK_SECRET']
+}
+
+Stripe.api_key = Rails.configuration.stripe[:secret_key]

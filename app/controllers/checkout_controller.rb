@@ -6,7 +6,7 @@ class CheckoutController < ApplicationController
         line_items_array << {
             name: line_item.product.name,
             description: line_item.product.description,
-            amount: line_item.product.price.to_i*100 ,
+            amount: line_item.product.price.to_i*100,
             currency: 'eur',
             quantity: line_item.quantity,
         }
