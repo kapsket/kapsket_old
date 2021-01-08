@@ -25,9 +25,10 @@ class WebhooksController < ApplicationController
 
     # Handle the event
     case event.type
-    when 'payment_intent.succeeded'
-      payment_intent = event.data.object # contains a Stripe::PaymentIntent
-      puts 'PaymentIntent was successful!'
+    when 'checkout.session.completed'
+      checkout_session = event.data.object 
+      Order.create(status: checkout_session.payment_status)
+      puts 'Checkout session was successful!'
     when 'payment_method.attached'
       payment_method = event.data.object # contains a Stripe::PaymentMethod
       puts 'PaymentMethod was attached to a Customer!'
