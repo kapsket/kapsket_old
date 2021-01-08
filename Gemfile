@@ -73,7 +73,7 @@ gem 'dotenv-rails'
 gem 'devise'
 gem 'devise-guests'
 # Debug
-gem "letter_opener", "~> 1.7"
+gem "letter_opener"
 gem "colorize", "~> 0.8.1"
 gem "table_print"
 gem 'bcrypt'

@@ -12,7 +12,7 @@
   <div class="column is-9">
     <div class="column align-items-center">
         <div class="content column is-9">
-            <%= truncate(line_item.product.description, length: 140)%>
+            <%= truncate(line_item.product.name, length: 140)%>
         </div>
         <div class=" column is-3 has-text-right">
           <strong class="f4"><%= number_to_currency(line_item.total_price) %></strong>
