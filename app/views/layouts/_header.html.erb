@@ -43,17 +43,31 @@
         
             <a class="closebtn" style="color: white" onclick="closeCart()">&times;</a>
 
-            <%= render(@cart.line_items) %>
-
+            <% @cart.line_items.each do |line_item|%>
+            <div class="d-flex justify-content-center header_cart_line_item">
+            <div class="column is-3">
+            <figure class="is-128*128 image">
+            <%=  image_tag(line_item.product.photos[0]) %>
+            </figure>
+            </div> 
+            <strong class="column header_cart_line_item"><%= line_item.product.name %></strong>
+            <%= link_to "+", @line_item, remote: true, method: :update, class: "minus"%>
+            </div>
+            <br />
+            <% end %>
+            <br />
+            <div class="d-flex justify-content-around">
             <%= button_to 'Empty Cart', @cart, method: :delete, data: { confirm: "Are you sure" }, class:"button is-danger"%>
-            <div class="column total pv1 mt4   has-text-right">
             <h4 class="title is-4">
             <span class="f5 has-text-grey">Total:</span> <%= number_to_currency(@cart.total_price) %>
             </h4>
+            </div>
+            <br />
+            <br />
+            <div class="d-flex justify-content-center">
             <%= button_to 'Buy now', checkout_create_path, method: :post, params: { id: @cart.id }, remote:true %>
             </div>
             </div>
             </div>  
             <div class="d-flex justify-content-center titre"><%= link_to "KAPSKET", products_path, method: :get %></div>
-
 </header> 

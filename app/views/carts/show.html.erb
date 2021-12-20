@@ -5,16 +5,19 @@
 <section class="section">
   <%= render(@cart.line_items) %>
 
-    <div class="columns">
-      <div class="column">
+
+    <div class="column">
+      <%# <div class="has-text-left">
         <%= button_to 'Empty Cart', @cart, method: :delete, data: { confirm: "Are you sure" }, class:"button is-danger"%>
-        </div>
-      </div>
-        <div class="column total pv1 mt4   has-text-right">
+        <div class="has-text-right">
           <h4 class="title is-4">
             <span class="f5 has-text-grey">Total:</span> <%= number_to_currency(@cart.total_price) %>
           </h4>
+          <div class="has-text-right">
+          <%= button_to 'Pay now', checkout_create_path, method: :post, params: { id: @cart.id }, remote:true, class:"button is-big mb4"%>
+          </div>
         </div>
       </div>
 </section>
-<%= button_to 'Buy now', checkout_create_path, method: :post, params: { id: @cart.id }, remote:true %>
+
+
