@@ -1,12 +1,7 @@
 <%= render 'layouts/header' %>
 <container>
-<div class="product_info">
-  <%= @product.name %>
-</div>
 
-<div class="product_info3">
-  <%= @product.description %>  
-</div>
+
 
 <div class="product_photo">
 <%if @product.photos.attached?%>
@@ -15,13 +10,24 @@
 <% end %>
 <% end %>
 </div>
-
-<div class="product_info2">
-  <div class="price"><%= @product.price%>€</div>
-  <div class="pay_button"><%= link_to 'Add to Cart', line_items_path(product_id: @product), method: :post ,  class:'btn btn m-0'%></div>
+</br>
+</br>
+<div class="product_info">
+  <%= @product.name %>
 </div>
-
-<br></br>
+</br>
+</br>
+<%# <div class="product_info3">
+  <%= @product.description %>  
+<div class="product_info2">
+<div class="pay_button"><%= link_to 'Add to Cart', line_items_path(product_id: @product), method: :post ,  class:'button is-big mb4'%></div>
+</div>
+<div class="product_info2">
+<strong><div class="price"><%= @product.price%>€</div></strong>
+</div>
+</br>
+</br>
+</br>
 
 </container>
 

@@ -20,12 +20,12 @@
 
 <div class="Menu2">
 
-  <ul>
+  <%# <ul>
     <li><%= link_to "All", products_path, remote: true %></li>
-    <li><%= link_to "Casquettes", products_path, remote: true %></li>
-    <li><%= link_to "Bonnets", products_path, remote: true %></li>
-    <li><%= link_to "Bobs", products_path, remote: true %></li>
-  </ul> 
+    <%# <li><%= link_to "Casquettes", products_path, remote: true %></li>
+    <%# <li><%= link_to "Bonnets", products_path, remote: true %></li> 
+    <%# <li><%= link_to "Bobs", products_path, remote: true %></li>
+  <%# </ul>  %>
     <div class="d-flex">
       <% @products.each do |product| %>
         <%if product.photos.attached?%>
