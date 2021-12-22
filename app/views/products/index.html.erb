@@ -2,66 +2,30 @@
 <%= render 'layouts/header' %>
 
 <body>
-<div class="container">
-<div class="row">
-<div class="col-sm-12 col-md-12 col-lg-4 text-center">
-
-
-
-<ul id="naviguation">
-
-<div class="col-sm-12 col-md-12 col-lg-3 text-center">
-<li><%= link_to "Produits", products_path %></li>
-</div>
-<div class="col-sm-12 col-md-12 col-lg-6 text-center">
-<li><%= link_to "À propos", about_index_path %></li>
-</div>
-<div class="col-sm-12 col-md-12 col-lg-3 text-center">
-<li><%= link_to "Contact", contact_index_path %></li>
-</div>
-
-</ul>
-
-</div>
-</div>
-</div>
-
-<div class="row">
-<div class="col-sm-12 col-md-12 col-lg-4 text-center">
-<div class="separateur_noir1"></div>
-</div>
-</div>
-</div>
-<div class="row">
-<div class="col-sm-12 col-md-12 col-lg-12 text-center">
-<div class="separateur_noir2">
-</div>
-</div>
-</div>
-</div>
-
-<!-- Menu 2 -->
-
-<%# <div class="Menu2"> %>
-
-  <%# <ul>
-    <li><%= link_to "All", products_path, remote: true</li>
-    <%# <li><%= link_to "Casquettes", products_path, remote: true</li> %>
-    <%# <li><%= link_to "Bonnets", products_path, remote: true</li>  %>
-    <%# <li><%= link_to "Bobs", products_path, remote: true</li> %>
-  <%# </ul>  %>
-    <div class="d-flex">
+    <div class="container">
       <% @products.each do |product| %>
         <%if product.photos.attached?%>
+         <div class="d-flex justify-content-center">
+          <div class="row">
+            <div class="col-sm-12 col-md-12 col-lg-12">
             <div class="img-fluid">
-              <%= image_tag(product.photos[0])%>
-              <%= link_to "#{product.name}", product %> 
-        <% end %>
-          </div>
+            <%= image_tag(product.photos[0])%>
+            </div>
+            </div>
+            </div>
+            </div> 
+            <div class="d-flex justify-content-center"> 
+            <div class="row">
+            <div class="col-sm-12 col-md-12 col-lg-12">
+            <%= link_to "#{product.name}", product %> 
+            <% end %>
+            </div>
+            </div>
             </div>
       <% end%>
     </div>
   </div>
+</div>
 
 </body>
 
