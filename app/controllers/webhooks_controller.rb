@@ -27,7 +27,7 @@ class WebhooksController < ApplicationController
     case event.type
     when 'checkout.session.completed'
       checkout_session = event.data.object 
-      Order.create(status: checkout_session.payment_status)
+      Order.create(status: checkout_session.payment_status user_id: current_or_guest_user.id)
       puts 'Checkout session was successful!'
     when 'payment_method.attached'
       payment_method = event.data.object # contains a Stripe::PaymentMethod
