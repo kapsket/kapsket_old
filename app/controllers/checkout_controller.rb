@@ -20,6 +20,8 @@ class CheckoutController < ApplicationController
         # Setting up a Stripe session for payment. 
         @session = Stripe::Checkout::Session.create(
             payment_method_types: ['card'],
+            shipping_address_collection: {
+            allowed_countries: ['FR', 'BE'],},
             line_items: line_items_array,
             success_url: checkout_success_url,
             cancel_url: checkout_cancel_url
