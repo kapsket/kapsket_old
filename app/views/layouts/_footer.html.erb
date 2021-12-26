@@ -18,6 +18,15 @@
         </div>
       </div>
         <center>
+        <% if current_user %>
+        <%= print("current_user")%>
+        <%= puts(current_user)%>
+        <%elsif guest_user%>
+        <%= print("guest_user")%>
+        <%= puts(guest_user)%>
+        <% else %>
+        <%= print("fuck that shit")%>
+        <%end%>
         <small class="text">Copyright © 2020 Kapsket. All rights reserved.</small>
         </center>
 </footer>

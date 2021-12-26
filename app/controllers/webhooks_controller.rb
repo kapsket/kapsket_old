@@ -27,8 +27,14 @@ class WebhooksController < ApplicationController
     case event.type
     when 'checkout.session.completed'
       checkout_session = event.data.object 
-      Order.create(status: checkout_session.payment_status user_id: current_or_guest_user.id stripe_id: checkout_session.stripe_id)
-      puts 'Checkout session was successful!'
+      if current_user
+        Order.create(status: checkout_session.payment_status, user_id: current_or_guest_user.id, stripe_id: checkout_session.payment_intent, amount: checkout_session.amount_total, city: checkout_session.shipping.address.city, country: checkout_session.shipping.address.country, line1: checkout_session.shipping.address.line1, line2: checkout_session.shipping.address.line2, postal_code: checkout_session.shipping.address.postal_code, state: checkout_session.shipping.address.state)
+        puts 'Checkout session was successful by a registered user!'
+      elsif guest_user
+        current_or_guest_user.update(guest: false, email: checkout_session.customer_details.email, password: "12345678")
+        Order.create(status: checkout_session.payment_status, user_id: current_or_guest_user.id, stripe_id: checkout_session.payment_intent, amount: checkout_session.amount_total, city: checkout_session.shipping.address.city, country: checkout_session.shipping.address.country, line1: checkout_session.shipping.address.line1, line2: checkout_session.shipping.address.line2, postal_code: checkout_session.shipping.address.postal_code, state: checkout_session.shipping.address.state)
+        puts 'Checkout session was successful by a guest user!'
+      end
     when 'payment_method.attached'
       payment_method = event.data.object # contains a Stripe::PaymentMethod
       puts 'PaymentMethod was attached to a Customer!'

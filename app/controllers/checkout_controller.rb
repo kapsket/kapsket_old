@@ -22,6 +22,28 @@ class CheckoutController < ApplicationController
             payment_method_types: ['card'],
             shipping_address_collection: {
             allowed_countries: ['FR', 'BE'],},
+            shipping_options: [
+                {
+                  shipping_rate_data: {
+                    type: 'fixed_amount',
+                    fixed_amount: {
+                      amount: 0,
+                      currency: 'eur',
+                    },
+                    display_name: 'Free shipping',
+                    # Delivers between 5-7 business days
+                    delivery_estimate: {
+                      minimum: {
+                        unit: 'business_day',
+                        value: 5,
+                      },
+                      maximum: {
+                        unit: 'business_day',
+                        value: 10,
+                      },
+                    }
+                  }
+                },],
             line_items: line_items_array,
             success_url: checkout_success_url,
             cancel_url: checkout_cancel_url
