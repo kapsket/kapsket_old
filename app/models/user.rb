@@ -6,6 +6,7 @@ class User < ApplicationRecord
   
   has_many :products 
   has_many :orders
+  has_many :carts
 
   # after_create :welcome_send
 

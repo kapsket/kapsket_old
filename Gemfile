@@ -78,6 +78,7 @@ gem "colorize", "~> 0.8.1"
 gem "table_print"
 gem 'bcrypt'
 gem 'faker'
+gem 'byebug'
 # Addons for Storage
 gem "aws-sdk-s3", require: false
 

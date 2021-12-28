@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_08_102910) do
+ActiveRecord::Schema.define(version: 2021_12_28_174353) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,16 +34,6 @@ ActiveRecord::Schema.define(version: 2020_12_08_102910) do
     t.string "checksum", null: false
     t.datetime "created_at", null: false
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
-  end
-
-  create_table "addresses", force: :cascade do |t|
-    t.text "name"
-    t.text "address_line_1"
-    t.text "address_line_2"
-    t.text "city"
-    t.text "state"
-    t.text "postal_code"
-    t.text "details"
   end
 
   create_table "breweries", force: :cascade do |t|
@@ -98,9 +88,7 @@ ActiveRecord::Schema.define(version: 2020_12_08_102910) do
     t.text "state"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "address_id"
     t.bigint "user_id"
-    t.index ["address_id"], name: "index_orders_on_address_id"
     t.index ["stripe_id"], name: "index_orders_on_stripe_id", unique: true
     t.index ["user_id"], name: "index_orders_on_user_id"
   end
@@ -140,18 +128,17 @@ ActiveRecord::Schema.define(version: 2020_12_08_102910) do
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
     t.boolean "guest", default: false
-    t.bigint "address_id"
-    t.index ["address_id"], name: "index_users_on_address_id"
+    t.bigint "cart_id"
+    t.index ["cart_id"], name: "index_users_on_cart_id"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "line_items", "carts"
   add_foreign_key "line_items", "products"
-  add_foreign_key "orders", "addresses"
   add_foreign_key "orders", "users"
   add_foreign_key "products", "caps"
   add_foreign_key "products", "colors"
   add_foreign_key "products", "types"
-  add_foreign_key "users", "addresses"
+  add_foreign_key "users", "carts"
 end

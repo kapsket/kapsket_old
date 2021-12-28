@@ -1,8 +1,7 @@
 class CheckoutController < ApplicationController
     def create
-        cart = Cart.find_by_id(session[:cart_id])
         line_items_array = []
-        cart.line_items.each do |line_item|
+        @cart.line_items.each do |line_item|
         line_items_array << {
             name: line_item.product.name,
             description: line_item.product.description,
@@ -12,7 +11,7 @@ class CheckoutController < ApplicationController
         }
         end
 
-        if cart.nil?
+        if @cart.nil?
             redirect_to root_path
             return
         end

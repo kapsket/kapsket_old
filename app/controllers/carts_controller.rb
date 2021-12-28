@@ -11,9 +11,6 @@ class CartsController < ApplicationController
   # GET /carts/1
   # GET /carts/1.json
   def show
-    if @cart.id != session[:cart_id]
-      redirect_to root_path
-    end
   end
 
   # GET /carts/new
@@ -58,8 +55,7 @@ class CartsController < ApplicationController
   # DELETE /carts/1
   # DELETE /carts/1.json
   def destroy
-    @cart.destroy if @cart.id == session[:cart_id]
-    session[:cart_id] = nil
+    @cart.destroy if @cart.id == current_user.id || guest_user.id
     respond_to do |format|
       format.html { redirect_to root_path, notice: 'Cart was successfully destroyed.' }
       format.json { head :no_content }
