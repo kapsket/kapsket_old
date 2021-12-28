@@ -1,6 +1,6 @@
 class CheckoutController < ApplicationController
     def create
-        cart = Cart.find(params[:id])
+        cart = Cart.find_by_id(session[:cart_id])
         line_items_array = []
         cart.line_items.each do |line_item|
         line_items_array << {

@@ -11,6 +11,9 @@ class CartsController < ApplicationController
   # GET /carts/1
   # GET /carts/1.json
   def show
+    if @cart.id != session[:cart_id]
+      redirect_to root_path
+    end
   end
 
   # GET /carts/new
