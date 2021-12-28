@@ -12,7 +12,7 @@
             <hr>
             <a href="<%= products_path %>">Acceuil</a>
             <hr>
-            <a href="<%= cart_path(guest_user.id) %>" data-method="get">Mon panier</a>
+            <a href="<%= cart_path(@cart) %>" data-method="get">Mon panier</a>
             <hr>
             <a href="<%= new_user_registration_path %>" data-method="get">S'inscrire</a>
             <hr>
