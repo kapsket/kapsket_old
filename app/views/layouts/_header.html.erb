@@ -8,7 +8,7 @@
             <a class="closebtn" style="color: white" onclick="closeNav()">&times;</a>
 
             <% case %>
-            <% when current_or_guest_user.guest == true %>
+            <% when guest_user%>
             <hr>
             <a href="<%= products_path %>">Acceuil</a>
             <hr>
@@ -21,7 +21,7 @@
             <a href="mailto:youremailaddress">Contact&nbsp;&nbsp;<i class="far fa-envelope"></i></a>
             <hr>
 
-            <% when current_or_guest_user.guest == false %>
+            <% when current_user %>
             <a href="<%= products_path %>">Acceuil</a>
             <hr>
             <a href="<%= edit_user_registration_path %>">Mon profil</a>
