@@ -9,9 +9,6 @@ Devise.setup do |config|
   # Devise will use the `secret_key_base` as its `secret_key`
   # by default. You can change it below and use your own secret key.
   # config.secret_key = '94b3def6836238045e2ff0753c5f6057e784007d1fc0cc9fe415ae05530db3afa8740add3cf1ae68f40d22d27287668b7398b71af5146986bbe41dc1a4331406'
-  config.warden do |manager|
-    manager.default_strategies(scope: :user).unshift :guest_user
-  end
   # ==> Controller configuration
   # Configure the parent class to the devise controllers.
   # config.parent_controller = 'DeviseController'

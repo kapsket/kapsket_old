@@ -3,7 +3,7 @@
 #
 #
 #
-User.create([{ first_name: 'Romain' }, { last_name: 'PODDEVIN' }, {phone: '+33645293849'}, {email: 'poddevin.romain@gmail.com'}, {password: '42Mouss@k@pourmoa!'}, {is_admin: true}])
+User.create(first_name: 'Romain' ,last_name: 'PODDEVIN' ,phone: '+33645293849', email: 'poddevin.romain@gmail.com', password: '42Mouss@k@pourmoa!' ,is_admin: true)
 print("admin user created")
-Product.create([{ name: 'Kapsket'}, { price: '20'}, {description: 'The original'}, {stock: '10'}])
+Product.create(name: 'Kapsket',price: '20',description: 'The original',stock: '10')
 print("product created")
