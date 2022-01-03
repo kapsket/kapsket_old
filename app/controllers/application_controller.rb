@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base   
+  include CurrentCart
   before_action :set_cart
 
     # if user is logged in, return current_user, else return guest_user
@@ -49,11 +50,4 @@ class ApplicationController < ActionController::Base
 
 end
 
-private 
 
-def set_cart
-  @cart = Cart.find(session[:cart_id])
-rescue ActiveRecord::RecordNotFound
-    @cart = Cart.create()
-    session[:cart_id] = @cart.id
-end

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Salut!</h1>
+    <p>
+      Nous avons bien pris en compte ta commande, dont voici le récapitalutif : 
+    </p>
+    <% @session_with_expand = Stripe::Checkout::Session.retrieve({id: "cs_test_a1sao0cslkJV8RE1EbHVekDPu3C7ppTWVGyYDayxDPQ1J1ewYXanfWBoff", expand: ["line_items"]}) %>
+    <% @session_with_expand.line_items.data.each do |line_item| %>
+    <%= line_item.price%>
+    <%= line_item.name%>
+    <%= line_item.amount%>
+    <% end %>
+
+
+    <p> À très vite !
+  </body>
+</html>

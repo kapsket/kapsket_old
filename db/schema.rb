@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_28_174353) do
+ActiveRecord::Schema.define(version: 2020_12_08_102910) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -77,7 +77,8 @@ ActiveRecord::Schema.define(version: 2021_12_28_174353) do
 
   create_table "orders", force: :cascade do |t|
     t.string "email"
-    t.string "stripe_id"
+    t.string "stripe_session_id"
+    t.string "stripe_payment_id"
     t.string "status"
     t.float "amount"
     t.text "city"
@@ -88,9 +89,10 @@ ActiveRecord::Schema.define(version: 2021_12_28_174353) do
     t.text "state"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "user_id"
-    t.index ["stripe_id"], name: "index_orders_on_stripe_id", unique: true
-    t.index ["user_id"], name: "index_orders_on_user_id"
+    t.bigint "cart_id"
+    t.index ["cart_id"], name: "index_orders_on_cart_id"
+    t.index ["stripe_payment_id"], name: "index_orders_on_stripe_payment_id", unique: true
+    t.index ["stripe_session_id"], name: "index_orders_on_stripe_session_id", unique: true
   end
 
   create_table "products", force: :cascade do |t|
@@ -128,17 +130,14 @@ ActiveRecord::Schema.define(version: 2021_12_28_174353) do
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
     t.boolean "guest", default: false
-    t.bigint "cart_id"
-    t.index ["cart_id"], name: "index_users_on_cart_id"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "line_items", "carts"
   add_foreign_key "line_items", "products"
-  add_foreign_key "orders", "users"
+  add_foreign_key "orders", "carts"
   add_foreign_key "products", "caps"
   add_foreign_key "products", "colors"
   add_foreign_key "products", "types"
-  add_foreign_key "users", "carts"
 end

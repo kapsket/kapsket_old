@@ -2,7 +2,8 @@ class CreateOrders < ActiveRecord::Migration[5.2]
   def change
     create_table :orders do |t|
       t.string :email
-      t.string :stripe_id
+      t.string :stripe_session_id
+      t.string :stripe_payment_id
       t.string :status
       t.float :amount
       t.text :city
@@ -13,6 +14,8 @@ class CreateOrders < ActiveRecord::Migration[5.2]
       t.text :state
       t.timestamps
     end
-    add_index :orders, :stripe_id, unique: true
+    add_index :orders, :stripe_session_id, unique: true
+    add_index :orders, :stripe_payment_id, unique: true
+
   end
 end

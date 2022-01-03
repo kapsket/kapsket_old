@@ -7,32 +7,15 @@
         
             <a class="closebtn" style="color: white" onclick="closeNav()">&times;</a>
 
-            <% case current_or_guest_user %>
-            <% when guest_user%>
             <hr>
             <a href="<%= products_path %>">Acceuil</a>
             <hr>
             <a href="<%= cart_path(@cart) %>" data-method="get">Mon panier</a>
             <hr>
-            <a href="<%= new_user_registration_path %>" data-method="get">S'inscrire</a>
-            <hr>
-            <a href="<%= new_user_session_path %>" data-method="get">Se connecter</a>
-            <hr>
             <a href="mailto:youremailaddress">Contact&nbsp;&nbsp;<i class="far fa-envelope"></i></a>
             <hr>
 
-            <% when current_user %>
-            <a href="<%= products_path %>">Acceuil</a>
-            <hr>
-            <a href="<%= edit_user_registration_path %>">Mon profil</a>
-            <hr>
-            <a href="<%= cart_path(id: current_user.id) %>" data-method="get">Mon panier</a>
-            <hr>
-            <a href="<%= destroy_user_session_path %>" data-method="delete">Se déconnecter</a>
-            <hr>
-            <a href="mailto:youremailaddress">Contact&nbsp;&nbsp;<i class="far fa-envelope"></i></a>
-            <hr>
-            <% end %>
+
             </div>
             </nav>
             </div>
@@ -43,31 +26,31 @@
         
             <a class="closebtn" style="color: white" onclick="closeCart()">&times;</a>
 
-            <%# <% @cart.line_items.each do |line_item|%>
-            <%# <div class="d-flex justify-content-center header_cart_line_item">
+            <% @cart.line_items.each do |line_item|%>
+            <div class="d-flex justify-content-center header_cart_line_item">
             <div class="column is-3">
-            <figure class="is-128*128 image"> %>
-            <%# <%=  image_tag(line_item.product.photos[0]) %> %>
-            <%# </figure>
-            </div> 
-            <strong class="column header_cart_line_item"><%= line_item.product.name %></strong> %>
-            <%# <%= link_to "+", @line_item, remote: true, method: :update, class: "minus"%> %>
-            <%# </div>
-            <br /> %>
-            <%# <% end %> %>
-            <%# <br />
-            <div class="d-flex justify-content-around"> %>
-            <%# <%= button_to 'Empty Cart', @cart, method: :delete, data: { confirm: "Are you sure" }, class:"button is-danger"%> %>
-            <%# <h4 class="title is-4"> %>
-            <%# <span class="f5 has-text-grey">Total:</span> <%= number_to_currency(@cart.total_price) %> %>
-            <%# </h4>
+            <figure class="is-128*128 image">
+            <%=  image_tag(line_item.product.photos[0]) %> 
+            </figure>
+            </div>
+            <strong class="column header_cart_line_item"><%= line_item.product.name %></strong> 
+            <%= link_to "+", @line_item, remote: true, method: :update, class: "minus"%> 
+            </div>
+            <br />
+            <% end %> 
+            <br />
+            <div class="d-flex justify-content-around">
+            <%= button_to 'Empty Cart', @cart, method: :delete, data: { confirm: "Are you sure" }, class:"button is-danger" %>
+            <h4 class="title is-4">
+            <span class="f5 has-text-grey">Total:</span> <%= number_to_currency(@cart.total_price) %>
+            </h4>
             </div>
             <br />
             <br />
-            <div class="d-flex justify-content-center"> %>
-            <%# <%= button_to 'Buy now', checkout_create_path, method: :post, params: { id: @cart.id }, remote:true %> %>
-            <%# </div>
+            <div class="d-flex justify-content-center">
+            <%= button_to 'Buy now', checkout_create_path, method: :post, params: { id: @cart.id }, remote:true %>
             </div>
-            </div>   %> %>
+            </div>
+            </div>  
             <div class="d-flex justify-content-center titre"><%= link_to "KAPSKET", products_path, method: :get %></div>
 </header> 
