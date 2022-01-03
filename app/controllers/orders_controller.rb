@@ -71,4 +71,5 @@ class OrdersController < ApplicationController
     def order_params
       params.require(:order).permit(:status, :paid_at, :stripe_id, :address)
     end
+
 end

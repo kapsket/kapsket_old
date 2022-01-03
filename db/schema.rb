@@ -36,16 +36,6 @@ ActiveRecord::Schema.define(version: 2020_12_08_102910) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
-  create_table "addresses", force: :cascade do |t|
-    t.text "name"
-    t.text "address_line_1"
-    t.text "address_line_2"
-    t.text "city"
-    t.text "state"
-    t.text "postal_code"
-    t.text "details"
-  end
-
   create_table "breweries", force: :cascade do |t|
     t.text "name"
     t.text "location"
@@ -86,16 +76,23 @@ ActiveRecord::Schema.define(version: 2020_12_08_102910) do
   end
 
   create_table "orders", force: :cascade do |t|
-    t.string "stripe_id"
+    t.string "email"
+    t.string "stripe_session_id"
+    t.string "stripe_payment_id"
     t.string "status"
-    t.datetime "paid_at"
+    t.float "amount"
+    t.text "city"
+    t.text "country"
+    t.text "line1"
+    t.text "line2"
+    t.text "postal_code"
+    t.text "state"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "address_id"
-    t.bigint "user_id"
-    t.index ["address_id"], name: "index_orders_on_address_id"
-    t.index ["stripe_id"], name: "index_orders_on_stripe_id", unique: true
-    t.index ["user_id"], name: "index_orders_on_user_id"
+    t.bigint "cart_id"
+    t.index ["cart_id"], name: "index_orders_on_cart_id"
+    t.index ["stripe_payment_id"], name: "index_orders_on_stripe_payment_id", unique: true
+    t.index ["stripe_session_id"], name: "index_orders_on_stripe_session_id", unique: true
   end
 
   create_table "products", force: :cascade do |t|
@@ -133,18 +130,14 @@ ActiveRecord::Schema.define(version: 2020_12_08_102910) do
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
     t.boolean "guest", default: false
-    t.bigint "address_id"
-    t.index ["address_id"], name: "index_users_on_address_id"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "line_items", "carts"
   add_foreign_key "line_items", "products"
-  add_foreign_key "orders", "addresses"
-  add_foreign_key "orders", "users"
+  add_foreign_key "orders", "carts"
   add_foreign_key "products", "caps"
   add_foreign_key "products", "colors"
   add_foreign_key "products", "types"
-  add_foreign_key "users", "addresses"
 end

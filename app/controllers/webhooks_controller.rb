@@ -27,12 +27,7 @@ class WebhooksController < ApplicationController
     case event.type
     when 'checkout.session.completed'
       checkout_session = event.data.object 
-      Order.create(status: checkout_session.payment_status)
-      puts 'Checkout session was successful!'
-    when 'payment_method.attached'
-      payment_method = event.data.object # contains a Stripe::PaymentMethod
-      puts 'PaymentMethod was attached to a Customer!'
-      # ... handle other event types
+        Order.create(stripe_session_id: checkout_session.id, status: checkout_session.payment_status, stripe_payment_id: checkout_session.payment_intent, amount: checkout_session.amount_total, city: checkout_session.shipping.address.city, country: checkout_session.shipping.address.country, line1: checkout_session.shipping.address.line1, line2: checkout_session.shipping.address.line2, postal_code: checkout_session.shipping.address.postal_code, state: checkout_session.shipping.address.state, email:checkout_session.customer_details.email)
     else
       puts "Unhandled event type: #{event.type}"
     end

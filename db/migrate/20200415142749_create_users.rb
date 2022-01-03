@@ -7,6 +7,7 @@ class CreateUsers < ActiveRecord::Migration[5.2]
       t.string :stripe_id
       t.boolean :is_admin
 
+
       t.timestamps
     end
   end

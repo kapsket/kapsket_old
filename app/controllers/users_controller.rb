@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
+  after_action :set_cart, only: [:create]
+
 
   # GET /users
   # GET /users.json

@@ -1,8 +1,7 @@
 class CheckoutController < ApplicationController
     def create
-        cart = Cart.find(params[:id])
         line_items_array = []
-        cart.line_items.each do |line_item|
+        @cart.line_items.each do |line_item|
         line_items_array << {
             name: line_item.product.name,
             description: line_item.product.description,
@@ -12,7 +11,7 @@ class CheckoutController < ApplicationController
         }
         end
 
-        if cart.nil?
+        if @cart.nil?
             redirect_to root_path
             return
         end
@@ -20,6 +19,8 @@ class CheckoutController < ApplicationController
         # Setting up a Stripe session for payment. 
         @session = Stripe::Checkout::Session.create(
             payment_method_types: ['card'],
+            shipping_address_collection: {
+            allowed_countries: ['FR', 'BE'],},
             line_items: line_items_array,
             success_url: checkout_success_url,
             cancel_url: checkout_cancel_url
