@@ -1,3 +1,10 @@
+GIT
+  remote: https://github.com/mimemagicrb/mimemagic.git
+  revision: 01f92d86d15d85cfd0f20dabd025dcbd36a8a60f
+  ref: 01f92d86d15d85cfd0f20dabd025dcbd36a8a60f
+  specs:
+    mimemagic (0.3.5)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -201,7 +208,6 @@ GEM
       mimemagic (~> 0.3.2)
     memoist (0.16.0)
     method_source (1.0.0)
-    mimemagic (0.3.4)
     mini_magick (4.11.0)
     mini_mime (1.0.2)
     mini_portile2 (2.4.0)
@@ -382,6 +388,7 @@ DEPENDENCIES
   json
   letter_opener
   listen (>= 3.0.5, < 3.2)
+  mimemagic!
   mini_magick
   nokogiri
   pg (>= 0.18, < 2.0)
