@@ -36,7 +36,6 @@ Rails.application.routes.draw do
       resources :carts 
     end
     resources :types 
-    resources :breweries  
-    end
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+    resources :bre
+  end
 end
