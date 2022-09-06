@@ -110,3 +110,7 @@ gem 'json'
 # Dependency on mimemagic 0.3.x no longer valid
 
 gem 'mimemagic', github: 'mimemagicrb/mimemagic', ref: '01f92d86d15d85cfd0f20dabd025dcbd36a8a60f'
+
+# Automate jQuery with Rails
+
+gem 'jquery-rails'
